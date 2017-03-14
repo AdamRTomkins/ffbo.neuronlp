@@ -1,15 +1,27 @@
+//Hackathon 2017 If we pass in a direct query, skip tutorials and login with guest pass.
+
 $(document).ready(function() {
-    $.blockUI({
-        message: $('#login-container'),
-        css: {
-            'border-radius': '10px',
-            'background': 'rgba(255,255,255,0.7)',
-            'min-width': '300px',
-            'left': 0,
-            'right': 0,
-            'margin': '0 auto'
-        }
-    });
+    params =  getAllUrlParams()
+    keys = Object.keys(params);
+    if (keys.length >0) {
+        $.unblockUI();
+        $("#welcomepage").hide();
+
+        start_guest_connection(); 
+        console.log("skil block UI")}
+    else{
+        $.blockUI({
+            message: $('#login-container'),
+            css: {
+                'border-radius': '10px',
+                'background': 'rgba(255,255,255,0.7)',
+                'min-width': '300px',
+                'left': 0,
+                'right': 0,
+                'margin': '0 auto'
+            }
+        });
+    }
 });
 
 var welcome_script = [

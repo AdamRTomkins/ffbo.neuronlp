@@ -67,6 +67,7 @@ $("#flycircuit-info")
  * hook, used in FFBOMesh3D.onMouseClick() to update information panel
  */
 function updateInfoPanel(d) {
+
     $('#neu-id').attr('name',d[0]);
     $('#neu-id').attr('uid',d[1]);
     $('#neu-id').text('FlyCircuit DB: ' + d[0]);
@@ -93,7 +94,7 @@ function updateNeuroArchInfo(d,session) {
 
 function imgError(image) {
     setTimeout(function (){
-        image.src = image.src;
+       image.src = image.src;
      }, 1000);
 }
 
@@ -101,7 +102,7 @@ function fetchFlycircuit(d,session) {
 
    session.call('ffbo.processor.fetch_flycircuit',[d[0]]).then(
          function (res) {
-            //console.log(res);
+            console.log(d);
             $('#neu-id').attr('name', d[0]);
             $('#neu-id').attr('uid', d[1]);
             $('#neu-id').text('FlyCircuit DB: ' + res['Name']);
@@ -116,9 +117,9 @@ function fetchFlycircuit(d,session) {
               table.children[0].children[tr_idx].children[2*td_idx].innerHTML = params[i];
               table.children[0].children[tr_idx].children[2*td_idx+1].innerHTML = res[params[i]].toString();
             }
-            div.children[1].children[0].children[1].src = res["Images"]["Original confocal image (Animation)"];
-            div.children[1].children[1].children[1].src = res["Images"]["Segmentation"];
-            div.children[1].children[2].children[1].src = res["Images"]["Skeleton (download)"];
+            //div.children[1].children[0].children[1].src = res["Images"]["Original confocal image (Animation)"];
+            //div.children[1].children[1].children[1].src = res["Images"]["Segmentation"];
+            //div.children[1].children[2].children[1].src = res["Images"]["Skeleton (download)"];
 
          },
          function (err) {

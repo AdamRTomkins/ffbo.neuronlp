@@ -45,12 +45,17 @@ function start_connection(authid, key){
     var feedback = document.getElementById('auth_feedback');
     feedback.innerHTML = "Welcome " + username + "!";
     feedback.style.color = "green";
+    
+
+
+    
     if(login_succ==false){
       setTimeout( function() {
         $.unblockUI();
         $("#welcomepage").hide();
       }, 1000);
       setTimeout( function() {
+        // Hackathon 2017: Remove The Forced Welcome, hopefully without reading params for the third time.
         bootbox.confirm("Take me to the demos?", function (result) { if (result) script_loader(welcome_script);});
       }, 2000);
      }
@@ -180,7 +185,15 @@ function start_connection(authid, key){
             function(res) {
 		//console.log("on_server_update() event received with directory: " + res);
 		populate_server_lists(res)
-            },
+            
+
+            params =  getAllUrlParams()
+            console.log(params)
+            keys = Object.keys(params);
+            if (keys.length >0) {retrieve_neuron_by_id(keys[0],params[keys[0]],client_session)
+            }
+            // Hackathon WIP : Allow multiple?
+           },
             function(err) {
 		console.log("server retrieval error:", err);
             }
