@@ -15,6 +15,12 @@ if (document.location.origin == "file://") {
 var connection;
 var login_succ = false;
 
+var direct_access = false;
+var params =  params =  getAllUrlParams()
+keys = Object.keys(params);
+if (keys.length >0) {direct_access = true}
+
+
 function start_connection(authid, key){
     // the WAMP connection to the Router
     //
@@ -55,8 +61,9 @@ function start_connection(authid, key){
         $("#welcomepage").hide();
       }, 1000);
       setTimeout( function() {
-        // Hackathon 2017: Remove The Forced Welcome, hopefully without reading params for the third time.
+          if (!direct_access){ // Only show Demo script if direct access is false
         bootbox.confirm("Take me to the demos?", function (result) { if (result) script_loader(welcome_script);});
+          }
       }, 2000);
      }
      login_succ = true;
@@ -187,10 +194,7 @@ function start_connection(authid, key){
 		populate_server_lists(res)
             
 
-            params =  getAllUrlParams()
-            console.log(params)
-            keys = Object.keys(params);
-            if (keys.length >0) {retrieve_neuron_by_id(keys[0],params[keys[0]],client_session)
+            if (direct_access) {retrieve_neuron_by_id(keys[0],params[keys[0]],client_session)
             }
             // Hackathon WIP : Allow multiple?
            },

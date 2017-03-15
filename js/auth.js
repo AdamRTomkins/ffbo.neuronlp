@@ -1,14 +1,11 @@
 //Hackathon 2017 If we pass in a direct query, skip tutorials and login with guest pass.
 
 $(document).ready(function() {
-    params =  getAllUrlParams()
-    keys = Object.keys(params);
-    if (keys.length >0) {
+    if (direct_access) {
         $.unblockUI();
         $("#welcomepage").hide();
 
         start_guest_connection(); 
-        console.log("skil block UI")}
     else{
         $.blockUI({
             message: $('#login-container'),
