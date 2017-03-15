@@ -6,7 +6,7 @@ $(document).ready(function() {
         $("#welcomepage").hide();
 
         start_guest_connection(); 
-    else{
+    }else{
         $.blockUI({
             message: $('#login-container'),
             css: {
