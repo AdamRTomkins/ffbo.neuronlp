@@ -102,7 +102,6 @@ function fetchFlycircuit(d,session) {
 
    session.call('ffbo.processor.fetch_flycircuit',[d[0]]).then(
          function (res) {
-            console.log(d);
             $('#neu-id').attr('name', d[0]);
             $('#neu-id').attr('uid', d[1]);
             $('#neu-id').text('FlyCircuit DB: ' + res['Name']);

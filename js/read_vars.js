@@ -92,7 +92,6 @@ function retrieve_neuron_by_id(key_type,key,session) {
 		    if('info' in res['success'])
 			Notify(res['success']['info']);
 		    if('data' in res['success']){
-		        console.log(res['success']['data']) 
 			data = {'ffbo_json': res['success']['data'],
 				'type': 'morphology_json'};
 			processFFBOjson(data)
