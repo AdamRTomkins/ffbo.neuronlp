@@ -56,6 +56,27 @@ function getAllUrlParams(url) {
   return obj;
 }
 
+function retrieve_tag_by_id(){
+    // Call Nikuls Tag functio/n
+    console.log("Requires Implementation")
+}
+
+function retrieve_by_id(key_type,key,session){
+    var valid_key_types = {'na':true,'vfb':true,'tag':true}
+        
+    if (key_type in valid_key_types){
+
+        if (key_type=='tag'){
+            retrieve_tag_by_id()
+        } else {
+            retrieve_neuron_by_id(key_type,key,session)
+        }
+    }else{
+        Notify("Invalid key type " + key_type ,null,null,'danger')
+    }
+
+
+}
 
 
 function retrieve_neuron_by_id(key_type,key,session) {
@@ -73,6 +94,8 @@ function retrieve_neuron_by_id(key_type,key,session) {
         msg['servers']['na'] = na_servers.options[na_servers.selectedIndex].value;
     } catch (err) {
         console.log("na server not valid")
+        Notify("Unable to contact Neuroarch server" ,null,null,'danger')
+
         return;
     }
     msg['task'] = {}

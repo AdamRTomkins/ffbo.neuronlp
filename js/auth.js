@@ -1,5 +1,3 @@
-//Hackathon 2017 If we pass in a direct query, skip tutorials and login with guest pass.
-
 $(document).ready(function() {
     if (direct_access) {
         $.unblockUI();

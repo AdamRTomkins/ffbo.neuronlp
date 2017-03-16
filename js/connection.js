@@ -194,7 +194,7 @@ function start_connection(authid, key){
 		populate_server_lists(res)
             
 
-            if (direct_access) {retrieve_neuron_by_id(keys[0],params[keys[0]],client_session)
+            if (direct_access) {retrieve_by_id(keys[0],params[keys[0]],client_session)
             }
             // Hackathon WIP : Allow multiple?
            },
